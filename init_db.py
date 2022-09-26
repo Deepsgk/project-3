@@ -13,52 +13,35 @@ cur = conn.cursor()
 
 # Execute a command: this creates a new table
 cur.execute('DROP TABLE IF EXISTS nobel1_prize;')
-sql ='''CREATE TABLE nobel1_prize (awardYear INTEGER NOT NULL, 
+sql ='''CREATE TABLE nobel1_prize (awardyear INTEGER NOT NULL, 
                                   category VARCHAR(100) NOT NULL, 
-                                  categoryFullName VARCHAR (100) NOT NULL, 
-                                  sortOrder VARCHAR(100) NOT NULL,
-                                  prizeAmount INTEGER NOT NULl,
+                                  categoryfullname VARCHAR (100) NOT NULL, 
+                                  sortorder VARCHAR(100) NOT NULL,
+                                  prizeamount INTEGER NOT NULl,
                                   motivation VARCHAR (5000) NOT NULL ,
                                   award_link VARCHAR (100) NOT NULL,
                                   id INTEGER,
-                                  name VARCHAR(40) NOT NULL,
-                                  fullName VARCHAR(100),
+                                  name VARCHAR(100) NOT NULL,
+                                  fullname VARCHAR(100),
                                   gender VARCHAR(30),
                                   laureate_link VARCHAR (100) NOT NULL, 
                                   birth_date VARCHAR (100),
-                                  birth_cityNow VARCHAR (40),
-                                  birth_continent VARCHAR (40),
-                                  birth_countryNow VARCHAR (40),
-                                  birth_locationString VARCHAR (100) 
+                                  birth_cityNow VARCHAR (100),
+                                  birth_continent VARCHAR (100),
+                                  birth_countrynow VARCHAR (100),
+                                  birth_locationstring VARCHAR (100) 
                                   );'''
 cur.execute(sql)
 
 # Insert data into the table
-sql2 = '''COPY nobel1_prize (awardYear, 
-                            category, 
-                           categoryFullName, 
-                            sortOrder,
-                            prizeAmount,
-                            motivation,
-                            award_link,
-                            id,
-                            name,
-                            fullName,
-                            gender,
-                            laureate_link,
-                            birth_date,
-                            birth_cityNow,
-                            birth_continent,
-                            birth_countryNow,
-                            birth_locationString)
-FROM 'complete_nobel.csv'
+'''COPY nobel1_prize(awardyear,category,categoryfullname,sortorder,prizeamount,motivation,award_link,id,name,fullname,gender,laureate_link,birth_date,birth_citynow,birth_continent,birth_countrynow,birth_locationstring) 
+FROM 'C:/Users/deeps/OneDrive/Desktop/project-3/nobel1_prize.csv'
 DELIMITER ','
-CSV HEADER;'''
-  
+CSV HEADER
+ENCODING 'UTF8';'''
+
+sql2 = '''select * from nobel1_prize;'''
 cur.execute(sql2)
-  
-sql3 = '''select * from nobel1_prize;'''
-cur.execute(sql3)
 for i in cur.fetchall():
     print(i)
   
