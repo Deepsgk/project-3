@@ -119,7 +119,7 @@ var icons = {
  * 
  */
 
-d3.json("http://127.0.0.1:5000/api/v0/country").then(
+d3.csv("nobelprizecoordinates.csv").then(
 data => {
 
   var sites = data;
@@ -137,14 +137,14 @@ data => {
 
       vLat        = sites[index].latitude;
       vLon        = sites[index].longitude;
-      vcity       = sites[index].organizationcity;
-      vcountry    = sites[index].organizationcountry;
-      vmotivation = sites[index].motivation;
-      vfirstname  = sites[index].firstname
-      vsurname   = sites[index].surname
-      vCategory   = sites[index].category
-      vgender     = sites[index].gender
-      vyear       = sites[index].year
+      vcity       = sites[index].Organizationcity;
+      vcountry    = sites[index].Organizationcountry;
+      vmotivation = sites[index].Motivation;
+      vfirstname  = sites[index].Firstname
+      vsurname   = sites[index].Surname
+      vCategory   = sites[index].Category
+      vgender     = sites[index].Gender
+      vyear       = sites[index].Year
 
       var siteMarker = L.circleMarker([vLat,vLon])
       .bindPopup("<h3>Firstname: " + vfirstname + "</h3><h3>Surname: " + vsurname + "</h3><h3>Award year: " + vyear + "</h3><h3>Gender: " + vgender +"</h3><h3>Motivation: " + vmotivation +"</h3><h3>Category: "+vCategory+"<h3>");
